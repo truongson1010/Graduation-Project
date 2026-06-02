@@ -1,0 +1,95 @@
+[1/10] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Espressif\frameworks\DATN\Leafnode\build\bootloader\esp-idf\esptool_py && C:\Espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.4.1/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 C:/Espressif/frameworks/DATN/Leafnode/build/bootloader/bootloader.bin"
+Bootloader binary size 0x6580 bytes. 0xa80 bytes (9%) free.
+[2/10] No install step for 'bootloader'
+[3/10] Completed 'bootloader'
+[4/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+In file included from C:/Espressif/frameworks/DATN/Leafnode/main/main.c:14:
+C:/Espressif/frameworks/esp-idf-v5.4.1/components/driver/deprecated/driver/adc.h:19:2: warning: #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively" [-Wcpp]
+   19 | #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively"
+      |  ^~~~~~~
+[5/10] Linking C static library esp-idf\main\libmain.a
+[6/10] Generating ld/sections.ld
+[7/10] Linking CXX executable Leafnode.elf
+[8/10] Generating binary image from built executable
+esptool.py v4.8.1
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated C:/Espressif/frameworks/DATN/Leafnode/build/Leafnode.bin
+[9/10] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Espressif\frameworks\DATN\Leafnode\build\esp-idf\esptool_py && C:\Espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.4.1/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/Espressif/frameworks/DATN/Leafnode/build/partition_table/partition-table.bin C:/Espressif/frameworks/DATN/Leafnode/build/Leafnode.bin"
+Leafnode.bin binary size 0xf8a10 bytes. Smallest app partition is 0x100000 bytes. 0x75f0 bytes (3%) free.
+Warning: The smallest app partition is nearly full (3% free space left)!
+[9/10] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Espressif\frameworks\esp-idf-v5.4.1\components\esptool_py && C:\Espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_PATH=C:/Espressif/frameworks/esp-idf-v5.4.1 -D SERIAL_TOOL=C:/Espressif/python_env/idf5.4_py3.11_env/Scripts/python.exe;;C:/Espressif/frameworks/esp-idf-v5.4.1/components/esptool_py/esptool/esptool.py;--chip;esp32 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=C:/Espressif/frameworks/DATN/Leafnode/build -P C:/Espressif/frameworks/esp-idf-v5.4.1/components/esptool_py/run_serial_tool.cmake"
+esptool.py --chip esp32 -p COM8 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 Leafnode.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.8.1
+Serial port COM8
+Connecting.....
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 94:54:c5:e7:60:c8
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x00108fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 25984 bytes to 16383...
+Writing at 0x00001000... (100 %)
+Wrote 25984 bytes (16383 compressed) at 0x00001000 in 0.7 seconds (effective 283.5 kbit/s)...
+Hash of data verified.
+Compressed 1018384 bytes to 644442...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001ca91... (5 %)
+Writing at 0x00029de1... (7 %)
+Writing at 0x000334ba... (10 %)
+Writing at 0x0003c33c... (12 %)
+Writing at 0x00041f14... (15 %)
+Writing at 0x00047944... (17 %)
+Writing at 0x0004d9f8... (20 %)
+Writing at 0x000538da... (22 %)
+Writing at 0x0005997a... (25 %)
+Writing at 0x0005f559... (27 %)
+Writing at 0x000657a1... (30 %)
+Writing at 0x0006aecc... (32 %)
+Writing at 0x0007031c... (35 %)
+Writing at 0x00075753... (37 %)
+Writing at 0x0007af5b... (40 %)
+Writing at 0x0008061d... (42 %)
+Writing at 0x00085b71... (45 %)
+Writing at 0x0008b11c... (47 %)
+Writing at 0x000902fe... (50 %)
+Writing at 0x00095703... (52 %)
+Writing at 0x0009ad2c... (55 %)
+Writing at 0x000a0b0d... (57 %)
+Writing at 0x000a5e0c... (60 %)
+Writing at 0x000ab34f... (62 %)
+Writing at 0x000b11de... (65 %)
+Writing at 0x000b6a47... (67 %)
+Writing at 0x000bc66a... (70 %)
+Writing at 0x000c2348... (72 %)
+Writing at 0x000c7dd4... (75 %)
+Writing at 0x000cd8fc... (77 %)
+Writing at 0x000d37fc... (80 %)
+Writing at 0x000d9173... (82 %)
+Writing at 0x000de614... (85 %)
+Writing at 0x000e6326... (87 %)
+Writing at 0x000efced... (90 %)
+Writing at 0x000f5915... (92 %)
+Writing at 0x000fb4e9... (95 %)
+Writing at 0x0010172a... (97 %)
+Writing at 0x001069a0... (100 %)
+Wrote 1018384 bytes (644442 compressed) at 0x00010000 in 14.8 seconds (effective 551.2 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 484.6 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Giám Sát ESP-MESH Đa Điểm</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <style>
+        :root { --primary: #007bff; --bg: #f4f7f9; --warn: #856404; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); padding: 20px; }
+        .container { max-width: 1200px; margin: auto; }
+        h1 { text-align: center; color: #2c3e50; }
+
+        /* Khối hiển thị từng Node */
+        .node-section { 
+            background: white; padding: 25px; border-radius: 20px; 
+            margin-bottom: 40px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--primary);
+        }
+        .node-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .card { background: #f8f9fa; padding: 15px; border-radius: 12px; text-align: center; }
+        .card h3 { font-size: 0.8em; color: #7f8c8d; text-transform: uppercase; margin: 0; }
+        .card p { font-size: 1.8em; font-weight: bold; margin: 5px 0; }
+
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .chart-box { background: #fff; border: 1px solid #eee; padding: 10px; border-radius: 10px; }
+
+        /* Panel cài đặt ngưỡng */
+        .config-panel { background: #fff3cd; padding: 20px; border-radius: 15px; margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center; }
+        .input-group { display: flex; align-items: center; gap: 8px; }
+        input { padding: 8px; width: 70px; border-radius: 5px; border: 1px solid #ccc; }
+        button { padding: 10px 25px; background: var(--warn); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        
+        /* Thanh trạng thái cố định góc màn hình kèm hiệu ứng chuyển động */
+        #status-bar { 
+            position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; 
+            border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+            font-weight: bold; transition: all 0.3s ease; 
+        }
+
+        /* Hiệu ứng chớp nháy báo động khi rớt nút (Relay B sập) hoặc vượt ngưỡng */
+        @keyframes alert-blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Hệ Thống Giám Sát Mạng Mesh</h1>
+    
+    <div class="config-panel">
+        <div class="input-group"><label>Nhiệt độ (°C):</label><input type="number" id="tempInput" value="40"></div>
+        <div class="input-group"><label>Độ ẩm (%):</label><input type="number" id="humiInput" value="80"></div>
+        <div class="input-group"><label>Ánh sáng (Lux):</label><input type="number" id="lightInput" value="300"></div>
+        <button onclick="setThresholds()">Cập Nhật Ngưỡng Toàn Mạng</button>
+    </div>
+
+    <div id="nodes-container"></div>
+</div>
+
+<div id="status-bar" style="background: #d4edda; color: #155724;">Hệ thống sẵn sàng</div>
+
+<script src="script.js"></script>
+</body>
+</html>

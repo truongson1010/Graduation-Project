@@ -1,0 +1,2 @@
+source C:/Espressif/frameworks/DATN/Leafnode/build/bootloader/gdbinit/symbols
+source C:/Espressif/frameworks/DATN/Leafnode/build/bootloader/gdbinit/connect

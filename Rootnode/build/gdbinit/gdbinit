@@ -1,0 +1,2 @@
+source C:/Espressif/frameworks/DATN/Rootnode/build/gdbinit/symbols
+source C:/Espressif/frameworks/DATN/Rootnode/build/gdbinit/connect
